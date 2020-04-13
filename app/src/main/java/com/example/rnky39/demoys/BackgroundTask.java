@@ -301,7 +301,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
         if(result !=null){
             if(result.equals("200")){
                 Toast.makeText(ctx, "Success", Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(ctx,HomeScreen.class);
+                Intent intent=new Intent(ctx,layer.class);
                 intent.putExtra("username",this.username);
                 intent.putExtra("user_data",this.user_data);
                 intent.putExtra("user_info",this.user_info);

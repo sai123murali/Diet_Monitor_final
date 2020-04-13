@@ -20,11 +20,19 @@ import java.util.List;
 public class layer extends AppCompatActivity implements OnClickListener {
 
     private CardView dietplan,alarm,steps,fitness,macros;
+    private String username;
+    private ArrayList<String> user_data;
+    private ArrayList<String> user_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_layer);
+
+        Bundle bundle=getIntent().getExtras();
+        this.username =bundle.getString("username");
+        this.user_data=bundle.getStringArrayList("user_data");
+        this.user_info=bundle.getStringArrayList("user_info");
 
         dietplan=(CardView) findViewById(R.id.diet_control);
         alarm=(CardView) findViewById(R.id.alarm);
@@ -51,7 +59,13 @@ public class layer extends AppCompatActivity implements OnClickListener {
         Intent i;
 
         switch(view.getId()){
-            case R.id.diet_control: i=new Intent(this,HomeScreen.class);startActivity(i); break;
+            case R.id.diet_control:
+                i=new Intent(this,HomeScreen.class);
+                i.putExtra("username",this.username);
+                i.putExtra("user_data",this.user_data);
+                i.putExtra("user_info",this.user_info);
+                startActivity(i);
+                break;
             case R.id.alarm: i=new Intent(this,alarm.class);startActivity(i); break;
             case R.id.steps: i=new Intent(this,steps.class);startActivity(i); break;
             case R.id.fitness: i=new Intent(this,fitness.class);startActivity(i); break;

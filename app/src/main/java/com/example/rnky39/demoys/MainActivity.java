@@ -75,13 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void signIn(View view){
-        Intent intent=new Intent(MainActivity.this,layer.class);
+        //Intent intent=new Intent(MainActivity.this,layer.class);
         this.username = e_username.getText().toString();
         this.password = e_password.getText().toString();
         BackgroundTask backgroundTask=new BackgroundTask(this,spinner);
         backgroundTask.execute("login",username,password);
-        startActivity(intent);
+        //startActivity(intent);
     }
-
-
-}
+ }
